@@ -14,3 +14,7 @@ class PasswordErrors:
 class RePasswordErrors:
 
     NOT_SAME:str = "Password and RePassword are not same !"
+
+class AuthenticationErrors:
+
+    INCORRECT_INFORMATION:str = "Entred Information Not Matched with Users of Website"

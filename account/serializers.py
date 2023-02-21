@@ -25,13 +25,13 @@ class UserRegisterSerializer(UserAuthenticationSerializer):
         "min_length" : PasswordErrors.PASSWORD_MIN_LENGTH,
     })
 
-    def validate_re_password(self):
-        password:str = self.validated_data.get("password")
-        re_password:str = self.validated_data.get("re_password")
-
+    def validate(self,data):
+        password:str = data.get("password","")
+        re_password:str = data.get("re_password","")
+        
         if password != re_password:
             raise serializers.ValidationError(RePasswordErrors.NOT_SAME)
-        return re_password
+        return data
 
     def create(self,validated_data):
         email:str = validated_data.get("email")
@@ -42,7 +42,7 @@ class UserRegisterSerializer(UserAuthenticationSerializer):
             email = email,
         )
         self.__user.set_password(password)
-        self.__user.save()
+        return self.__user
 
     @property
     def user(self):
