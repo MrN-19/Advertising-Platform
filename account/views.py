@@ -73,4 +73,3 @@ class UserAds(APIView):
 
         return Response(data = ads_serializer.data,status=status.HTTP_200_OK)
     
-        
