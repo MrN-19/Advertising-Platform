@@ -18,3 +18,19 @@ class RePasswordErrors:
 class AuthenticationErrors:
 
     INCORRECT_INFORMATION:str = "Entred Information Not Matched with Users of Website"
+
+class AdsTitle:
+
+    MAX_LENGTH_ERROR:str = "Entred Title is too long"
+    REQUIRED_ERROR:str = "Please Enter Title"
+
+class CategoryTitle:
+    MAX_LENGTH_ERROR:str = "Entred Category is too long"
+    REQUIRED_ERROR:str = "Please Enter Category"
+
+class Describtion:
+    MAX_LENGTH_ERROR:str = "Entred Describtion is too long"
+    REQUIRED_ERROR:str = "Please Enter Describtion"
+
+class Price:
+    REQUIRED_ERROR:str = "Please Enter Price"
