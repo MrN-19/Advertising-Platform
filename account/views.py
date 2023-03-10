@@ -72,4 +72,3 @@ class UserAds(APIView):
         ads_serializer = AdsSerializer(instance = user_ads,many=True)
 
         return Response(data = ads_serializer.data,status=status.HTTP_200_OK)
-    
