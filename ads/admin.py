@@ -12,4 +12,9 @@ class AdsAdmin(admin.ModelAdmin):
 
 admin.site.register(models.Ads,AdsAdmin)
 
+class LocationAdmin(admin.ModelAdmin):
+    list_filter = ("city","province")
+
+admin.site.register(models.ProvinceCity,LocationAdmin)
+
 
