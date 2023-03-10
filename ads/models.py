@@ -13,6 +13,17 @@ class AdsCategory(models.Model):
         verbose_name_plural = "دسته بندی آگهی ها"
 
 
+class ProvinceCity(models.Model):
+    city = models.CharField(max_length=100,verbose_name="شهر")
+    province = models.CharField(max_length=100,verbose_name="استان")
+
+    def __str__(self):
+        return self.province + " " + self.city
+    
+    class Meta:
+        verbose_name_plural = "استان"
+
+
 class Ads(models.Model):
 
     PAYMENT_CHOICES = (("agreement","توافقی"),("fixed","مقطوع"))
@@ -23,7 +34,9 @@ class Ads(models.Model):
     describtion = models.TextField(max_length=1000,verbose_name="توضیحات آگهی")
     payment_type = models.CharField(max_length=120,choices=PAYMENT_CHOICES,verbose_name="نوع پرداخت")
     price = models.PositiveBigIntegerField(verbose_name="مبلغ",null=True,blank=True)
-    
+    publish_date = models.DateTimeField(auto_now_add=True,verbose_name="تاریخ انتشار",null=True)
+    location = models.ForeignKey(ProvinceCity,on_delete=models.DO_NOTHING,related_name="ads",null=True)
+
 
     def __str__(self):
         return self.title
